@@ -313,8 +313,11 @@ function collect_devices() {
 				MESSAGE
 			fi
 		fi
+
 		# Update in-use for each bdf. Default from the map_supported_devices() is 0 == "not used"
-		local -n type_ref=${all_devices_type_d["$bdf"]}_d
+		#local -n type_ref=${all_devices_type_d["$bdf"]}_d
+		ype_ref_variable_name="${all_devices_type_d["$bdf"]}_d"
+                declare -a type_ref="$type_ref_variable_name"
 		type_ref["$bdf"]=$in_use
 		all_devices_d["$bdf"]=$in_use
 	done
